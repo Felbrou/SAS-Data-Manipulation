@@ -39,6 +39,6 @@ run;
 data houston_monthly;
 	set pg2.weather_houston;
 	keep Date Month DailyRain YTDRain;
-	YTDRain+DailyRain;
+	YTDRain+DailyRain; /*accumulative column*/
 run;       
 
