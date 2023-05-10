@@ -42,3 +42,14 @@ data houston_monthly;
 	YTDRain+DailyRain; /*accumulative column*/
 run;       
 
+/*We'll modify the DATA step to create an accumulating column named MTDRain, or Month-to-Date Rain, and use the First. variable to reset it each time a new month begins*/
+
+data houston_monthly;
+	set pg2.weather_houston;
+	keep Date Month DailyRain MTDRain;
+	BY Month;
+	IF First.Month=1 THEN MTDRain=0; /*this will reset the variable each time a new month begin*/
+	MTDRain+DailyRain;
+run;       
+
+
