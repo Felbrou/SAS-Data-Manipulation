@@ -28,5 +28,5 @@ data stays;
 	StayAvg=ROUND(MEAN(of CL:));
 	IF StayAvg > 0;
 	format Stay: comma11.;
-	keep Park Stay: AvgStay;
+	keep Park Stay: StayAvg;
 run;
